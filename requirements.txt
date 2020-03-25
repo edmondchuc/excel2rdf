@@ -1,0 +1,6 @@
+click
+rdflib
+pandas
+xlrd
+wheel
+twine
