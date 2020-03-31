@@ -4,3 +4,4 @@ pandas
 xlrd
 wheel
 twine
+validators

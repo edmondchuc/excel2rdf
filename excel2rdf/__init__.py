@@ -1,7 +1,22 @@
-from rdflib import Graph, URIRef, Literal, Namespace
+from rdflib import Graph, URIRef, Literal, Namespace, XSD
 import pandas as pd
+import validators
 
 from uuid import uuid4
+import re
+from datetime import datetime
+
+
+def is_curie(value):
+    return re.fullmatch('\\S+:\\S+', value)
+
+
+def is_datetime(value):
+    return re.fullmatch('^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?$', value)
+
+
+def is_date(value):
+    return re.fullmatch('^([1-9][0-9]{3})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])?$', value)
 
 
 def _get_prefixes(df):
@@ -20,7 +35,10 @@ def _get_prefixes(df):
 
 
 def _resolve_curie(curie, prefixes):
-    prefix, localname = curie.split(':')
+    try:
+        prefix, localname = curie.split(':')
+    except Exception as e:
+        raise Exception(str(e), curie)
     if not prefixes.get(prefix):
         raise Exception(f'Prefix {prefix} is not defined.')
     return URIRef(prefixes[prefix] + localname)
@@ -31,8 +49,18 @@ def _generate_uri(base_uri):
 
 
 def _add_object(value, prefixes):
-    if not pd.isnull(value) and type(value) == str and value.__contains__(':') and not value.__contains__('http:') and not value.__contains__('https:'):
-        return _resolve_curie(value, prefixes)
+    if not pd.isnull(value) and type(value) == str and value.__contains__(':'):
+        if is_datetime(value):
+            return Literal(value, datatype=XSD.dateTime)
+        elif is_date(value):
+            return Literal(value, datatype=XSD.date)
+        elif validators.url(value):
+            return URIRef(value)
+        elif is_curie(value):
+            return _resolve_curie(value, prefixes)
+        else:
+            pass
+
     return Literal(value)
 
 

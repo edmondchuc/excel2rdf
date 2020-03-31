@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="excel2rdf",
-    version="0.1.0",
+    version="0.1.5",
     author="Edmond Chuc",
     author_email="edmond.chuc@gmail.com",
     description="Generate RDF from Excel spreadsheets.",
@@ -30,5 +30,5 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     entry_points={'console_scripts': ['excel2rdf = excel2rdf.cli:main']},
-    install_requires=['rdflib', 'click', 'pandas', 'xlrd'],
+    install_requires=['rdflib', 'click', 'pandas', 'xlrd', 'validators'],
 )
