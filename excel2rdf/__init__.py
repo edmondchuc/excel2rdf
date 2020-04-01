@@ -36,6 +36,8 @@ def _get_prefixes(df):
 
 def _resolve_curie(curie, prefixes):
     try:
+        if '.' in curie:
+            curie = curie.split('.')[0]
         prefix, localname = curie.split(':')
     except Exception as e:
         raise Exception(str(e), curie)
@@ -73,7 +75,9 @@ def convert(df, base_uri, prefixes):
         for key in row.keys():
             if key != 'uri':
                 if not pd.isnull(row[key]):
-                    g.add((uri, _resolve_curie(key, prefixes), _add_object(row[key], prefixes)))
+                    curie_value = _resolve_curie(key, prefixes)
+                    object_value = _add_object(row[key], prefixes)
+                    g.add((uri, curie_value, object_value))
 
     return g
 

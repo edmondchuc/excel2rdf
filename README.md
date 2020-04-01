@@ -53,3 +53,8 @@ A single base URI is declared with the first cell containing `##` and the second
 |----|----------------------------------|---------------------------------------------|
 | #  | schema                           | http://schema.org/                          |
 | #  | rdf                              | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
+
+
+## Caveats
+
+- The `.` character cannot be used in the headings of each column.

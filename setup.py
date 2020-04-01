@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="excel2rdf",
-    version="0.1.5",
+    version="0.1.6",
     author="Edmond Chuc",
     author_email="edmond.chuc@gmail.com",
     description="Generate RDF from Excel spreadsheets.",
