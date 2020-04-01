@@ -245,11 +245,6 @@ modules.xml
 
 # Pyre type checker
 
-### Spreadsheet ###
-*.xlr
-*.xls
-*.xlsx
-
 ### venv ###
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
