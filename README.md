@@ -57,7 +57,7 @@ A single base URI is declared with the first cell containing `##` and the second
 
 ### Full Excel Spreadsheet Example
 
-See [examples/manufacturers.xlsx](examples/manufacturers.xlsx) for a full example.
+See [examples/manufacturers.xlsx](https://github.com/edmondchuc/excel2rdf/blob/master/examples/manufacturers.xlsx) for a full example.
 
 
 ## Caveats
