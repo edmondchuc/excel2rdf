@@ -35,10 +35,12 @@ The other columns of the header denote the *predicate* of the triple statement i
 
 #### Example Data Sheet
 
-| uri                                                                  | rdf:type      | schema:name |
-|----------------------------------------------------------------------|---------------|-------------|
-|                                                                      | schema:Person | John Smith  |
-| https://w3id.org/tern/resources/dada3918-f119-457b-a2e8-d10032ba44de | schema:Person | Jane Smith  |
+| uri                                                                  | rdf:type      |  schema:name   |
+|----------------------------------------------------------------------|---------------|----------------|
+|                                                                      | schema:Person | John Smith     |
+| https://w3id.org/tern/resources/dada3918-f119-457b-a2e8-d10032ba44de | schema:Person | Jane Smith@en  |
+
+Yes, you can also use language tags on your string literal values.
 
 
 ### Prefix Declaration

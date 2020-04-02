@@ -63,6 +63,12 @@ def _add_object(value, prefixes):
         else:
             pass
 
+    # Check if it is a string literal and if it has a language tag.
+    if type(value) == str and value.__contains__('@'):
+        lang = value.split('@')[-1]
+        value = value.split('@')[0]
+        return Literal(value, lang=lang)
+
     return Literal(value)
 
 
