@@ -30,5 +30,5 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     entry_points={'console_scripts': ['excel2rdf = excel2rdf.cli:main']},
-    install_requires=['rdflib', 'click', 'pandas', 'xlrd', 'validators'],
+    install_requires=['rdflib', 'click', 'pandas', 'openpyxl', 'validators'],
 )

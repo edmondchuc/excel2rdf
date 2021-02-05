@@ -1,7 +1,7 @@
 click
 rdflib
 pandas
-xlrd
 wheel
 twine
 validators
+openpyxl
