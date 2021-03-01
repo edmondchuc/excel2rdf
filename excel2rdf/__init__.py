@@ -89,9 +89,9 @@ def convert(df, base_uri, prefixes):
 
 
 def excel2rdf(file):
-    prefixes_df = pd.read_excel(file, header=None, sheet_name='prefixes')
+    prefixes_df = pd.read_excel(file, header=None, sheet_name='prefixes', engine='openpyxl')
     base_uri, prefixes, prefixes_g = _get_prefixes(prefixes_df)
-    df = pd.read_excel(file, sheet_name=0)
+    df = pd.read_excel(file, sheet_name=0, engine='openpyxl')
     g = convert(df, base_uri, prefixes) + prefixes_g
 
     return g
